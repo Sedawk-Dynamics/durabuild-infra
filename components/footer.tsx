@@ -142,7 +142,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-xl font-bold hover:text-[#0a3d3d] transition-colors">
+                <Link href="/contact" className="text-xl font-bold hover:text-[#0a3d3d] transition-colors">
                   Blog
                 </Link>
               </li>

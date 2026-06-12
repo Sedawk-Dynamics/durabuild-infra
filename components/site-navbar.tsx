@@ -13,7 +13,7 @@ export function SiteNavbar() {
   const [searchOpen, setSearchOpen] = useState(false)
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null)
 
-  const navItems = ["about", "sectors", "services", "projects", "csr", "blog", "contact"]
+  const navItems = ["about", "sectors", "services", "projects", "csr", "contact"]
 
   const servicesSections = [
     {
@@ -113,15 +113,7 @@ export function SiteNavbar() {
                     onMouseLeave={() => setActiveMegaMenu(null)}
                   >
                     <Link
-                      href={
-                        item === "contact"
-                          ? "/contact"
-                          : item === "services"
-                            ? "/services"
-                            : item === "blog"
-                              ? "/blog"
-                              : `/#${item}`
-                      }
+                      href={item === "contact" ? "/contact" : item === "services" ? "/services" : `/#${item}`}
                       className="px-5 py-2.5 rounded-full text-sm font-medium uppercase tracking-wide transition-all duration-200 text-[#0a3d3d] hover:bg-[#c9a961] hover:text-white"
                     >
                       {item.charAt(0).toUpperCase() + item.slice(1)}

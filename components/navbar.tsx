@@ -256,26 +256,18 @@ export function Navbar() {
             </div>
 
             <div className="hidden lg:flex items-center gap-2">
-              {["about", "sectors", "services", "projects", "csr", "blog", "contact"].map((item) => {
-                const hasMegaMenu = item in megaMenuContent
-                const href = item === "contact" ? "/contact" : item === "blog" ? "/blog" : `/#${item}`
-                return (
-                  <div
-                    key={item}
-                    className="relative"
-                    onMouseEnter={() => setActiveMegaMenu(hasMegaMenu ? item : null)}
+              {["about", "sectors", "services", "projects", "csr", "contact"].map((item) => (
+                <div key={item} className="relative" onMouseEnter={() => setActiveMegaMenu(item)}>
+                  <Link
+                    href={item === "contact" ? "/contact" : `/#${item}`}
+                    className={`px-6 py-2.5 rounded-full text-sm font-medium uppercase tracking-wide transition-all duration-200 ${
+                      activeMegaMenu === item ? "bg-[#c9a961] text-white" : "text-[#0a3d3d] hover:bg-[#c9a961]/10"
+                    }`}
                   >
-                    <Link
-                      href={href}
-                      className={`px-6 py-2.5 rounded-full text-sm font-medium uppercase tracking-wide transition-all duration-200 ${
-                        activeMegaMenu === item ? "bg-[#c9a961] text-white" : "text-[#0a3d3d] hover:bg-[#c9a961]/10"
-                      }`}
-                    >
-                      {item.charAt(0).toUpperCase() + item.slice(1)}
-                    </Link>
-                  </div>
-                )
-              })}
+                    {item.charAt(0).toUpperCase() + item.slice(1)}
+                  </Link>
+                </div>
+              ))}
             </div>
 
             <div className="flex items-center gap-4">
@@ -328,13 +320,6 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             >
               CSR
-            </Link>
-            <Link
-              href="/blog"
-              className="text-sm font-medium text-[#0a3d3d] uppercase tracking-wide hover:text-[#c9a961] transition-colors py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Blog
             </Link>
             <Link
               href="/contact"

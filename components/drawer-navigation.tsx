@@ -68,7 +68,7 @@ export function DrawerNavigation({ isOpen, onClose }: DrawerNavigationProps) {
       title: "Media",
       links: [
         { label: "Projects Gallery", href: "/projects" },
-        { label: "Blog", href: "/blog" },
+        { label: "Blog", href: "/contact" },
       ],
     },
     {
