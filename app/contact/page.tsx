@@ -18,10 +18,43 @@ export default function ContactPage() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Web3Forms public access key (safe to expose client-side).
+  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "6017c6cb-c86f-4800-bb05-06e6c18d7053"
+
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle")
+  const [statusMessage, setStatusMessage] = useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    setStatus("sending")
+    setStatusMessage("")
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `New enquiry from ${formData.name || "website"} — ${formData.query || "General"}`,
+          from_name: "Durabuild Website",
+          ...formData,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setStatus("success")
+        setStatusMessage("Thank you! Your message has been sent. Our team will get back to you within 24 hours.")
+        setFormData({ name: "", organization: "", email: "", phone: "", query: "", message: "" })
+      } else {
+        setStatus("error")
+        setStatusMessage(data.message || "Something went wrong. Please try again.")
+      }
+    } catch {
+      setStatus("error")
+      setStatusMessage("Network error. Please check your connection and try again.")
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -319,10 +352,34 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full md:w-auto px-12">
-                    <Send className="w-4 h-4 mr-2" />
-                    Submit
-                  </Button>
+                  <div className="flex flex-col gap-4">
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full md:w-auto px-12"
+                      disabled={status === "sending"}
+                    >
+                      <Send className="w-4 h-4 mr-2" />
+                      {status === "sending" ? "Sending..." : "Submit"}
+                    </Button>
+
+                    {status === "success" && (
+                      <p
+                        role="status"
+                        className="text-sm font-medium text-[#0a3d3d] bg-[#c9a961]/10 border border-[#c9a961]/30 rounded-lg px-4 py-3"
+                      >
+                        {statusMessage}
+                      </p>
+                    )}
+                    {status === "error" && (
+                      <p
+                        role="alert"
+                        className="text-sm font-medium text-red-700 bg-red-50 border border-red-200 rounded-lg px-4 py-3"
+                      >
+                        {statusMessage}
+                      </p>
+                    )}
+                  </div>
                 </form>
               </CardContent>
             </Card>

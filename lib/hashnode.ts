@@ -11,7 +11,10 @@
  * /api/revalidate.
  */
 
-const HASHNODE_ENDPOINT = "https://gql.hashnode.com/"
+// NOTE: no trailing slash. `https://gql.hashnode.com/` issues a 301 redirect,
+// and fetch downgrades the redirected POST to a GET — which returns Hashnode's
+// HTML landing page instead of JSON. Hitting the canonical URL avoids that.
+const HASHNODE_ENDPOINT = "https://gql.hashnode.com"
 
 /** The publication host to pull posts from. Override via env in other environments. */
 export const HASHNODE_HOST = process.env.NEXT_PUBLIC_HASHNODE_HOST ?? "durubuildinfra.hashnode.dev"
@@ -83,8 +86,10 @@ interface GraphQLResponse<T> {
 async function hashnodeFetch<T>(query: string, variables: Record<string, unknown>): Promise<T> {
   const res = await fetch(HASHNODE_ENDPOINT, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify({ query, variables }),
+    // Don't silently follow redirects into an HTML page — surface them instead.
+    redirect: "follow",
     // ISR: cache the response, revalidate periodically, and allow on-demand
     // invalidation through the shared cache tag.
     next: { revalidate: REVALIDATE_SECONDS, tags: [HASHNODE_CACHE_TAG] },
@@ -92,6 +97,14 @@ async function hashnodeFetch<T>(query: string, variables: Record<string, unknown
 
   if (!res.ok) {
     throw new Error(`Hashnode request failed: ${res.status} ${res.statusText}`)
+  }
+
+  // Guard against non-JSON responses (redirects, challenge pages, outages):
+  // parsing HTML as JSON would otherwise throw a cryptic "Unexpected token '<'".
+  const contentType = res.headers.get("content-type") ?? ""
+  if (!contentType.includes("application/json")) {
+    const snippet = (await res.text()).slice(0, 120).replace(/\s+/g, " ")
+    throw new Error(`Hashnode returned a non-JSON response (content-type: "${contentType}"): ${snippet}`)
   }
 
   const json = (await res.json()) as GraphQLResponse<T>

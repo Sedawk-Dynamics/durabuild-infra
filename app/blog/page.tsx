@@ -30,7 +30,16 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-  const { posts } = await getPosts(12)
+  // Fetch defensively: a Hashnode outage (or non-JSON response) should render a
+  // graceful notice rather than crashing static generation / the build.
+  let posts: Awaited<ReturnType<typeof getPosts>>["posts"] = []
+  let loadFailed = false
+  try {
+    posts = (await getPosts(12)).posts
+  } catch (error) {
+    console.error("BlogPage: failed to fetch posts from Hashnode", error)
+    loadFailed = true
+  }
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -59,9 +68,13 @@ export default async function BlogPage() {
         <section className="container mx-auto px-4 lg:px-8 py-20">
           {posts.length === 0 ? (
             <div className="max-w-xl mx-auto text-center py-20">
-              <h2 className="text-2xl font-bold text-[#0a3d3d] mb-4">No posts yet</h2>
+              <h2 className="text-2xl font-bold text-[#0a3d3d] mb-4">
+                {loadFailed ? "Articles are temporarily unavailable" : "No posts yet"}
+              </h2>
               <p className="text-muted-foreground mb-8">
-                We&apos;re busy on site. New articles are on the way — check back soon.
+                {loadFailed
+                  ? "We couldn't reach the blog right now. Please check back in a few minutes."
+                  : "We're busy on site. New articles are on the way — check back soon."}
               </p>
               <Button asChild>
                 <Link href="/">Back to Home</Link>

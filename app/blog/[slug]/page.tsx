@@ -68,7 +68,16 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
-  const post = await getPostBySlug(slug)
+
+  let post
+  try {
+    post = await getPostBySlug(slug)
+  } catch (error) {
+    // Treat a transient fetch failure as "not found" so build/prerender never
+    // hard-fails; ISR will regenerate the page on a later request.
+    console.error(`BlogPostPage: failed to fetch post "${slug}"`, error)
+    notFound()
+  }
 
   if (!post) {
     notFound()
