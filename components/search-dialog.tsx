@@ -11,6 +11,8 @@ interface SearchDialogProps {
   onClose: () => void
 }
 
+
+
 export function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const router = useRouter()

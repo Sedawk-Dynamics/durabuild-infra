@@ -7,7 +7,10 @@ import { Menu, X, ArrowRight } from "lucide-react"
 import { useState } from "react"
 
 const megaMenuContent = {
+
   about: {
+
+    
     title: "Building Excellence",
     description:
       "Our commitment to quality and innovation drives everything we do — from our skilled professionals to our project managers. We excel at delivering projects that meet the highest standards of construction.",
