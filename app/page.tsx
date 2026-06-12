@@ -657,7 +657,7 @@ export default function Home() {
           </div>
           {/* CHANGE: Replaced service cards with clickable cards linking to service pages */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Link href="/services/civil-construction" className="block group cursor-pointer">
+            <Link href="/services/construction-services" className="block group cursor-pointer">
               <Card className="border-2 hover:border-primary transition-colors h-full">
                 <CardContent className="p-8">
                   <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
@@ -833,7 +833,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-12">
             <Button size="lg" variant="outline" asChild>
-              <Link href="/contact">View All Projects</Link>
+              <Link href="/projects">View All Projects</Link>
             </Button>
           </div>
         </div>
@@ -902,7 +902,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-12">
             <Button size="lg" variant="outline" asChild>
-              <Link href="/contact">Explore Our CSR Initiatives</Link>
+              <Link href="/csr">Explore Our CSR Initiatives</Link>
             </Button>
           </div>
         </div>

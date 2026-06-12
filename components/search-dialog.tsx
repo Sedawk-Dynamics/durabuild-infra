@@ -21,7 +21,7 @@ export function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
       title: "Civil Construction",
       category: "Services",
       description: "Residential, commercial & industrial buildings",
-      href: "/services/civil-construction",
+      href: "/services/construction-services",
       keywords: ["construction", "building", "residential", "commercial", "industrial"],
     },
     {

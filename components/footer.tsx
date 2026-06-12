@@ -70,7 +70,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/services/civil-construction"
+                  href="/services/construction-services"
                   className="text-gray-700 hover:text-[#0a3d3d] transition-colors text-sm"
                 >
                   Safety
@@ -142,7 +142,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-xl font-bold hover:text-[#0a3d3d] transition-colors">
+                <Link href="/blog" className="text-xl font-bold hover:text-[#0a3d3d] transition-colors">
                   Blog
                 </Link>
               </li>

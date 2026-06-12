@@ -394,7 +394,7 @@ export default function ServicesPage() {
 
         <div className="container mx-auto px-4 lg:px-8 mt-16">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Link href="/services/civil-construction" className="group">
+            <Link href="/services/construction-services" className="group">
               <Card className="border-2 hover:border-[#c9a961] transition-all duration-300 overflow-hidden h-full">
                 <div className="relative h-64 overflow-hidden">
                   <Image

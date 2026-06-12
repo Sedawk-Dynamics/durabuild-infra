@@ -40,7 +40,7 @@ export function DrawerNavigation({ isOpen, onClose }: DrawerNavigationProps) {
       id: "approach",
       title: "Approach",
       links: [
-        { label: "Civil Construction", href: "/services/civil-construction" },
+        { label: "Civil Construction", href: "/services/construction-services" },
         { label: "Infrastructure Development", href: "/services/infrastructure-development" },
         { label: "Project Management", href: "/services/project-management" },
         { label: "Interior & Exterior Works", href: "/services/interior-exterior" },
@@ -60,15 +60,15 @@ export function DrawerNavigation({ isOpen, onClose }: DrawerNavigationProps) {
       title: "Suppliers",
       links: [
         { label: "Construction Materials", href: "/services/construction-materials" },
-        { label: "Material Supply", href: "/services/construction-materials" },
+        { label: "Material Supply", href: "/services/material-supply" },
       ],
     },
     {
       id: "media",
       title: "Media",
       links: [
-        { label: "Projects Gallery", href: "/projects/residential" },
-        { label: "Blog", href: "/contact" },
+        { label: "Projects Gallery", href: "/projects" },
+        { label: "Blog", href: "/blog" },
       ],
     },
     {
