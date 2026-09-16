@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Navbar } from "@/components/navbar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Home, Building, Users, Calendar } from "lucide-react"
@@ -10,8 +9,6 @@ import { Home, Building, Users, Calendar } from "lucide-react"
 export default function ResidentialProjectsPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden pt-28">
         <div className="absolute inset-0 z-0">

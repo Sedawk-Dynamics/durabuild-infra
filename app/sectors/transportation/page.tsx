@@ -5,13 +5,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Route, CheckCircle2 } from "lucide-react"
-import { Navbar } from "@/components/navbar"
 
 export default function TransportationPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-
       <section className="relative h-[400px] flex items-center justify-center overflow-hidden mt-28">
         <div className="absolute inset-0 z-0">
           <Image

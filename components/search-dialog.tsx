@@ -159,6 +159,20 @@ export function SearchDialog({ isOpen, onClose }: SearchDialogProps) {
       href: "/csr/india-run-sports",
       keywords: ["sports", "athletics", "fitness", "games"],
     },
+    {
+      title: "Privacy Policy",
+      category: "Legal",
+      description: "How we collect, use and protect your information",
+      href: "/privacy-policy",
+      keywords: ["privacy", "data", "personal information", "cookies"],
+    },
+    {
+      title: "Terms of Use",
+      category: "Legal",
+      description: "Rules for using the Durabuild website",
+      href: "/terms",
+      keywords: ["terms", "conditions", "legal", "disclaimer"],
+    },
   ]
 
   const searchResults = searchableContent.filter((item) => {

@@ -1,7 +1,5 @@
 "use client"
 
-import { SiteNavbar } from "@/components/site-navbar"
-import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, CheckCircle2, Package, Truck, Shield } from "lucide-react"
@@ -11,8 +9,6 @@ import Image from "next/image"
 export default function MaterialSupplyPage() {
   return (
     <>
-      <SiteNavbar />
-
       <section className="relative h-[500px] flex items-center justify-center overflow-hidden mt-28">
         <div className="absolute inset-0 z-0">
           <Image
@@ -287,7 +283,6 @@ export default function MaterialSupplyPage() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

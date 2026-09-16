@@ -3,13 +3,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Hammer, CheckCircle, ArrowRight, Mail, Phone } from "lucide-react"
-import { SiteNavbar } from "@/components/site-navbar"
 
 export default function ConstructionMaterialsPage() {
   return (
     <div className="min-h-screen bg-background">
-      <SiteNavbar />
-
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden pt-28">
         <div className="absolute inset-0 z-0">
           <Image
@@ -393,8 +390,8 @@ export default function ConstructionMaterialsPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Email Quotes</h3>
                   <p className="text-muted-foreground mb-4">Send us your material list</p>
-                  <a href="mailto:support@gmail.com" className="text-lg font-semibold text-primary hover:underline">
-                    support@gmail.com
+                  <a href="mailto:support@durainfra.com" className="text-lg font-semibold text-primary hover:underline">
+                    support@durainfra.com
                   </a>
                 </CardContent>
               </Card>

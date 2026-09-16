@@ -2,379 +2,210 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Menu, X, ArrowRight } from "lucide-react"
-import { useState } from "react"
-
-const megaMenuContent = {
-
-  about: {
-
-    
-    title: "Building Excellence",
-    description:
-      "Our commitment to quality and innovation drives everything we do — from our skilled professionals to our project managers. We excel at delivering projects that meet the highest standards of construction.",
-    cta: {
-      label: "Discover Our Story",
-      href: "#about",
-    },
-    sections: [
-      {
-        title: "Mission & Vision",
-        description:
-          "Our mission is to deliver world-class infrastructure that stands the test of time and contributes to nation-building.",
-        image: "/mega-menu-mission.jpg",
-        href: "/about/mission-vision",
-      },
-      {
-        title: "Leadership Team",
-        description:
-          "Our leadership team is united in their commitment to driving progress and excellence in every project we undertake.",
-        image: "/mega-menu-leadership.jpg",
-        href: "/about/leadership",
-      },
-      {
-        title: "Why Durabuild",
-        description:
-          "Quality, innovation, and trust are the pillars that make Durabuild the preferred choice for construction projects.",
-        image: "/mega-menu-why-us.jpg",
-        href: "/about/why-durabuild",
-      },
-    ],
-  },
-  sectors: {
-    title: "Industry Sectors",
-    description:
-      "We deliver specialized construction and infrastructure solutions across diverse industrial sectors, from urban development to advanced technology facilities.",
-    cta: {
-      label: "Explore Our Sectors",
-      href: "#sectors",
-    },
-    sections: [
-      {
-        title: "Urban Infrastructure",
-        description:
-          "Comprehensive urban development projects including roads, drainage systems, and civic infrastructure for modern cities.",
-        image: "/mega-menu-infrastructure.jpg",
-        href: "/sectors/urban-infrastructure",
-      },
-      {
-        title: "Advanced Technology Facilities",
-        description:
-          "State-of-the-art facilities for IT parks, data centers, and technology hubs with cutting-edge infrastructure.",
-        image: "/mega-menu-construction.jpg",
-        href: "/sectors/advanced-technology",
-      },
-      {
-        title: "Transportation",
-        description:
-          "Highways, bridges, metro systems, and transportation infrastructure connecting communities and enabling growth.",
-        image: "/mega-menu-infra-projects.jpg",
-        href: "/sectors/transportation",
-      },
-      {
-        title: "Water",
-        description: "Water treatment plants, reservoirs, distribution networks, and water management infrastructure.",
-        image: "/mega-menu-water.jpg",
-        href: "/sectors/water",
-      },
-    ],
-  },
-  services: {
-    title: "Comprehensive Solutions",
-    description:
-      "From residential buildings to large-scale infrastructure projects, we provide end-to-end construction solutions tailored to your specific needs.",
-    cta: {
-      label: "Explore All Services",
-      href: "#services",
-    },
-    sections: [
-      {
-        title: "Civil Construction",
-        description:
-          "Expert construction services for residential, commercial, and industrial projects with modern designs and quality execution.",
-        image: "/mega-menu-construction.jpg",
-        href: "/services/construction-services",
-      },
-      {
-        title: "Infrastructure Development",
-        description:
-          "Building roads, bridges, and urban infrastructure that connects communities and drives economic growth.",
-        image: "/mega-menu-infrastructure.jpg",
-        href: "/services/infrastructure-development",
-      },
-      {
-        title: "Project Management",
-        description:
-          "Complete project oversight from planning to execution, ensuring timely delivery and quality assurance at every stage.",
-        image: "/mega-menu-management.jpg",
-        href: "/services/project-management",
-      },
-      {
-        title: "Interior & Exterior Works",
-        description:
-          "Complete painting, plastering, POP, false ceiling, and renovation services for residential and commercial spaces.",
-        image: "/mega-menu-construction.jpg",
-        href: "/services/interior-exterior",
-      },
-      {
-        title: "Construction Materials",
-        description:
-          "Premium quality cement, steel, putty, paints, and finishing materials supply from trusted manufacturers.",
-        image: "/mega-menu-infrastructure.jpg",
-        href: "/services/construction-materials",
-      },
-    ],
-  },
-  projects: {
-    title: "Landmark Projects",
-    description:
-      "Our portfolio showcases diverse projects across residential, commercial, and infrastructure sectors, each delivered with precision and excellence.",
-    cta: {
-      label: "View All Projects",
-      href: "#projects",
-    },
-    sections: [
-      {
-        title: "Residential Developments",
-        description:
-          "Modern housing complexes and luxury apartments designed for comfortable living with world-class amenities.",
-        image: "/mega-menu-residential.jpg",
-        href: "#projects",
-      },
-      {
-        title: "Commercial Buildings",
-        description:
-          "State-of-the-art commercial spaces that combine functionality with aesthetic appeal for businesses to thrive.",
-        image: "/mega-menu-commercial.jpg",
-        href: "#projects",
-      },
-      {
-        title: "Infrastructure Works",
-        description:
-          "Large-scale infrastructure projects including roads, bridges, and government contracts that shape the future.",
-        image: "/mega-menu-infra-projects.jpg",
-        href: "#projects",
-      },
-    ],
-  },
-  csr: {
-    title: "Corporate Social Responsibility",
-    description:
-      "We believe in giving back to society through meaningful initiatives that empower communities, support education, promote health, and encourage sports.",
-    cta: {
-      label: "Explore Our CSR Initiatives",
-      href: "#csr",
-    },
-    sections: [
-      {
-        title: "Skill Building and Livelihood",
-        description:
-          "Empowering communities through vocational training, skill development programs, and livelihood opportunities for sustainable growth.",
-        image: "/vocational-training-skill-development-workshop.jpg",
-        href: "/csr/skill-building",
-      },
-      {
-        title: "Education",
-        description:
-          "Supporting quality education through infrastructure development, scholarships, and learning resources for underprivileged children.",
-        image: "/children-in-classroom-education-learning.jpg",
-        href: "/csr/education",
-      },
-      {
-        title: "Health and Hygiene",
-        description:
-          "Promoting health awareness, sanitation facilities, and hygiene practices for healthier communities and better living standards.",
-        image: "/health-hygiene-awareness-community-program.jpg",
-        href: "/csr/health-hygiene",
-      },
-      {
-        title: "India Run Sports",
-        description:
-          "Encouraging sports participation, building sports infrastructure, and supporting athletes to promote fitness and national pride.",
-        image: "/mega-menu-construction.jpg",
-        href: "/csr/india-run-sports",
-      },
-    ],
-  },
-  contact: {
-    title: "Let's Build Together",
-    description:
-      "Ready to start your project? Get in touch with our team for a free consultation, site visit, and detailed quotation.",
-    cta: {
-      label: "Contact Us Today",
-      href: "/contact",
-    },
-    sections: [
-      {
-        title: "Get a Quote",
-        description: "Request a detailed quotation for your project with transparent pricing and no hidden costs.",
-        image: "/mega-menu-quote.jpg",
-        href: "/contact",
-      },
-      {
-        title: "Visit Our Office",
-        description:
-          "Located in Dehradun, Uttarakhand. Visit us during working hours or schedule an appointment for project discussion.",
-        image: "/mega-menu-office.jpg",
-        href: "/contact",
-      },
-      {
-        title: "24/7 Support",
-        description:
-          "Reach us via phone, WhatsApp, or email. Our team is always ready to assist you with your construction needs.",
-        image: "/mega-menu-support.jpg",
-        href: "/contact",
-      },
-    ],
-  },
-}
+import { usePathname } from "next/navigation"
+import { useEffect, useRef, useState } from "react"
+import { ArrowRight, ChevronDown, Menu, Search } from "lucide-react"
+import { DrawerNavigation } from "@/components/drawer-navigation"
+import { SearchDialog } from "@/components/search-dialog"
+import { NAV_SECTIONS } from "@/lib/navigation"
 
 export function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null)
+  const pathname = usePathname()
+  const [activeId, setActiveId] = useState<string | null>(null)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const progressRef = useRef<HTMLDivElement>(null)
+
+  const active = NAV_SECTIONS.find((section) => section.id === activeId)
+
+  // Frosted header once the page scrolls, plus a thin reading-progress line
+  useEffect(() => {
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      setScrolled(window.scrollY > 8)
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`
+      }
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    window.addEventListener("resize", onScroll)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener("scroll", onScroll)
+      window.removeEventListener("resize", onScroll)
+    }
+  }, [pathname])
+
+  // Close the dropdown whenever the route changes
+  useEffect(() => {
+    setActiveId(null)
+  }, [pathname])
+
+  useEffect(() => {
+    if (!activeId) return
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveId(null)
+    }
+    document.addEventListener("keydown", handleEscape)
+    return () => document.removeEventListener("keydown", handleEscape)
+  }, [activeId])
+
+  const isCurrentSection = (href: string) => {
+    const base = "/" + href.split("/")[1]
+    return pathname === base || pathname.startsWith(base + "/")
+  }
 
   return (
-    <div
-      onMouseLeave={() => {
-        setActiveMegaMenu(null)
-      }}
-    >
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between h-28">
-            <div className="flex items-center">
-              <Link href="/">
+    <>
+      <DrawerNavigation isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
+
+      {/* Dim the page while a dropdown is open */}
+      <div
+        aria-hidden
+        className={`fixed inset-0 top-28 z-40 bg-black/25 pointer-events-none transition-opacity duration-200 ${
+          active ? "opacity-100" : "opacity-0"
+        }`}
+      />
+
+      <header className="fixed top-0 left-0 right-0 z-50" onMouseLeave={() => setActiveId(null)}>
+        <nav
+          className={`relative border-b transition-[background-color,box-shadow,border-color] duration-500 ${
+            scrolled || active
+              ? "bg-white/90 backdrop-blur-xl border-gray-200/70 shadow-[0_10px_30px_-18px_rgba(10,61,61,0.35)]"
+              : "bg-white border-gray-200 shadow-sm"
+          }`}
+        >
+          <div
+            ref={progressRef}
+            aria-hidden
+            className="absolute left-0 right-0 bottom-0 h-[2px] origin-left bg-gradient-to-r from-[#c9a961] to-[#e0c98e] [transform:scaleX(0)] transition-none"
+          />
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="flex items-center justify-between h-28">
+              <Link href="/" className="flex items-center">
                 <Image
                   src="/logo-horizontal.png"
                   alt="Durabuild Infra Build"
                   width={280}
                   height={80}
                   className="h-16 w-auto"
+                  priority
                 />
               </Link>
-            </div>
 
-            <div className="hidden lg:flex items-center gap-2">
-              {["about", "sectors", "services", "projects", "csr", "contact"].map((item) => (
-                <div key={item} className="relative" onMouseEnter={() => setActiveMegaMenu(item)}>
-                  <Link
-                    href={item === "contact" ? "/contact" : `/#${item}`}
-                    className={`px-6 py-2.5 rounded-full text-sm font-medium uppercase tracking-wide transition-all duration-200 ${
-                      activeMegaMenu === item ? "bg-[#c9a961] text-white" : "text-[#0a3d3d] hover:bg-[#c9a961]/10"
+              <ul className="hidden lg:flex items-center gap-1">
+                {NAV_SECTIONS.map((section) => {
+                  const open = activeId === section.id
+                  const current = isCurrentSection(section.href)
+                  return (
+                    <li key={section.id} onMouseEnter={() => setActiveId(section.id)}>
+                      <Link
+                        href={section.href}
+                        onFocus={() => setActiveId(section.id)}
+                        aria-expanded={open}
+                        className={`flex items-center gap-1.5 px-4 xl:px-5 py-2.5 rounded-full text-sm font-medium uppercase tracking-wide transition-colors ${
+                          open
+                            ? "bg-[#c9a961] text-white"
+                            : current
+                              ? "bg-[#c9a961]/15 text-[#0a3d3d]"
+                              : "text-[#0a3d3d] hover:bg-[#c9a961]/10"
+                        }`}
+                      >
+                        {section.label}
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+
+              <div className="flex items-center gap-3" onMouseEnter={() => setActiveId(null)}>
+                <button
+                  onClick={() => setSearchOpen(true)}
+                  className="w-12 h-12 rounded-full border border-gray-200 text-[#0a3d3d] hover:border-[#c9a961] hover:text-[#c9a961] flex items-center justify-center transition-colors"
+                  aria-label="Search"
+                >
+                  <Search className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => setDrawerOpen(true)}
+                  className="w-12 h-12 rounded-full bg-[#c9a961] hover:bg-[#b8985a] text-white flex items-center justify-center transition-colors shadow-lg"
+                  aria-label="Menu"
+                >
+                  <Menu className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Dropdown panel */}
+          {active && (
+            <div
+              key={active.id}
+              className="hidden lg:block absolute top-full left-0 right-0 bg-white border-t border-gray-100 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200"
+            >
+              <div className="container mx-auto px-4 lg:px-8 py-10">
+                <div className="grid grid-cols-4 gap-10">
+                  <div className="col-span-1 border-r border-gray-100 pr-8">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-[#c9a961] mb-3">{active.label}</p>
+                    <h2 className="text-2xl xl:text-3xl font-bold text-[#0a3d3d] mb-4 text-balance">{active.title}</h2>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">{active.description}</p>
+                    <Link
+                      href={active.cta.href}
+                      onClick={() => setActiveId(null)}
+                      className="inline-flex items-center gap-2 rounded-full bg-[#0a3d3d] hover:bg-[#0d4d4d] text-white text-sm font-medium px-5 py-2.5 transition-colors"
+                    >
+                      {active.cta.label}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+
+                  <ul
+                    className={`col-span-3 grid gap-2 content-start max-h-[60vh] overflow-y-auto ${
+                      active.links.length > 4 ? "grid-cols-3" : "grid-cols-2"
                     }`}
                   >
-                    {item.charAt(0).toUpperCase() + item.slice(1)}
-                  </Link>
+                    {active.links.map((link) => (
+                      <li key={link.title}>
+                        <Link
+                          href={link.href}
+                          onClick={() => setActiveId(null)}
+                          className="group flex items-center gap-4 p-3 rounded-xl hover:bg-[#f5f1e8] transition-colors"
+                        >
+                          <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
+                            <Image
+                              src={link.image}
+                              alt=""
+                              fill
+                              sizes="64px"
+                              className="object-cover group-hover:scale-110 transition-transform duration-300"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <h3 className="font-semibold text-[#0a3d3d] group-hover:text-[#b8985a] transition-colors">
+                              {link.title}
+                            </h3>
+                            <p className="text-sm text-muted-foreground line-clamp-2">{link.description}</p>
+                          </div>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ))}
-            </div>
-
-            <div className="flex items-center gap-4">
-              <button
-                className="text-[#0a3d3d] hover:text-[#c9a961] transition-colors lg:hidden"
-                aria-label="Menu"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-200 fixed top-28 left-0 right-0 z-40">
-          <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            <Link
-              href="/#about"
-              className="text-sm font-medium text-[#0a3d3d] uppercase tracking-wide hover:text-[#c9a961] transition-colors py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/#sectors"
-              className="text-sm font-medium text-[#0a3d3d] uppercase tracking-wide hover:text-[#c9a961] transition-colors py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Sectors
-            </Link>
-            <Link
-              href="/#services"
-              className="text-sm font-medium text-[#0a3d3d] uppercase tracking-wide hover:text-[#c9a961] transition-colors py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Services
-            </Link>
-            <Link
-              href="/#projects"
-              className="text-sm font-medium text-[#0a3d3d] uppercase tracking-wide hover:text-[#c9a961] transition-colors py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Projects
-            </Link>
-            <Link
-              href="/#csr"
-              className="text-sm font-medium text-[#0a3d3d] uppercase tracking-wide hover:text-[#c9a961] transition-colors py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              CSR
-            </Link>
-            <Link
-              href="/contact"
-              className="text-sm font-medium text-[#0a3d3d] uppercase tracking-wide hover:text-[#c9a961] transition-colors py-2"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact
-            </Link>
-          </div>
-        </div>
-      )}
-
-      {activeMegaMenu && (
-        <div className="fixed inset-0 z-40 pt-28 bg-white animate-in fade-in slide-in-from-top-4 duration-300">
-          <div className="container mx-auto px-4 lg:px-8 py-16">
-            <div className={`grid ${activeMegaMenu === "sectors" ? "lg:grid-cols-4" : "lg:grid-cols-4"} gap-12`}>
-              <div className="lg:col-span-1">
-                <h2 className="text-4xl font-bold text-[#0a3d3d] mb-6 text-balance">
-                  {megaMenuContent[activeMegaMenu as keyof typeof megaMenuContent].title}
-                </h2>
-                <p className="text-muted-foreground leading-relaxed mb-8">
-                  {megaMenuContent[activeMegaMenu as keyof typeof megaMenuContent].description}
-                </p>
-                <Button asChild className="inline-flex items-center gap-2" onClick={() => setActiveMegaMenu(null)}>
-                  <Link href={megaMenuContent[activeMegaMenu as keyof typeof megaMenuContent].cta.href}>
-                    <span>{megaMenuContent[activeMegaMenu as keyof typeof megaMenuContent].cta.label}</span>
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
-                </Button>
-              </div>
-
-              <div
-                className={`${activeMegaMenu === "sectors" ? "lg:col-span-3" : "lg:col-span-3"} grid md:grid-cols-2 ${activeMegaMenu === "sectors" ? "lg:grid-cols-2" : activeMegaMenu === "csr" ? "lg:grid-cols-2" : "md:grid-cols-3"} gap-8`}
-              >
-                {megaMenuContent[activeMegaMenu as keyof typeof megaMenuContent].sections.map((section, idx) => (
-                  <Link key={idx} href={section.href} className="group" onClick={() => setActiveMegaMenu(null)}>
-                    <div className="relative h-48 rounded-lg overflow-hidden mb-4">
-                      <Image
-                        src={section.image || "/placeholder.svg"}
-                        alt={section.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    <h3 className="text-xl font-bold text-[#0a3d3d] mb-2 group-hover:text-[#c9a961] transition-colors">
-                      {section.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{section.description}</p>
-                  </Link>
-                ))}
               </div>
             </div>
-          </div>
-        </div>
-      )}
-    </div>
+          )}
+        </nav>
+      </header>
+
+      <SearchDialog isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+    </>
   )
 }

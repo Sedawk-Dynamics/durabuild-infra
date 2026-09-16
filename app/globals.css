@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -141,5 +141,154 @@
       transition-property: transform, opacity;
       transition-duration: 500ms;
     }
+  }
+
+  html {
+    scroll-padding-top: 8rem; /* keep anchor targets clear of the fixed header */
+  }
+  body {
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: rgb(201 169 97 / 0.35);
+    color: #0a3d3d;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #c9a961;
+    outline-offset: 3px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(10 61 61 / 0.35) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(10 61 61 / 0.3);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(10 61 61 / 0.5);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Motion polish — layered on top of the existing design, never replacing it.
+   Utilities still win over these rules.
+   --------------------------------------------------------------------------- */
+@layer components {
+  /* Gentle fade when a page opens (opacity only, so fixed/sticky children are unaffected) */
+  [data-page] {
+    animation: page-in 0.6s ease-out both;
+  }
+
+  /* Hero headline, subtitle and buttons rise in on load */
+  [data-page] h1 {
+    animation: rise-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+  [data-page] h1 ~ p {
+    animation: rise-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  }
+  [data-page] h1 ~ div:has(> a, > button) {
+    animation: rise-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+
+  /* Cinematic hero: dark base, slow settle-in zoom, soft brand-tinted gradient */
+  [data-page] section:first-of-type:has(> .absolute.inset-0 > :is(img, video)) {
+    background-color: #0a3d3d;
+  }
+  [data-page] section:first-of-type > .absolute.inset-0 > :is(img, video) {
+    animation: hero-settle 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  [data-page] section:first-of-type > .absolute.inset-0:has(> :is(img, video))::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgb(10 61 61 / 0.25) 0%, transparent 35%, rgb(6 36 36 / 0.55) 100%);
+  }
+
+  /* Scroll reveal (attribute is added by components/page-transition.tsx) */
+  [data-reveal] {
+    opacity: 0 !important;
+    transform: translate3d(0, 28px, 0);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  [data-reveal="in"] {
+    opacity: 1 !important;
+    transform: none;
+  }
+
+  /* Cards lift softly on hover */
+  [data-slot="card"] {
+    transition:
+      box-shadow 0.4s ease,
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s ease;
+  }
+  [data-slot="card"]:not(:has(form, iframe)):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 45px -24px rgb(10 61 61 / 0.35);
+  }
+
+  /* Tactile button press */
+  [data-slot="button"]:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hero-settle {
+  from {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-page],
+  [data-page] h1,
+  [data-page] h1 ~ p,
+  [data-page] h1 ~ div,
+  [data-page] section:first-of-type > .absolute.inset-0 > :is(img, video) {
+    animation: none !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  [data-slot="card"]:hover,
+  [data-slot="button"]:active {
+    transform: none !important;
   }
 }

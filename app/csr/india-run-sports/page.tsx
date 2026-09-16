@@ -5,16 +5,13 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Route, CheckCircle2, Trophy, Heart, Users, Target } from "lucide-react"
-import { Navbar } from "@/components/navbar"
 
 export default function IndiaRunSportsPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-
       <section className="relative h-[400px] flex items-center justify-center overflow-hidden mt-28">
         <div className="absolute inset-0 z-0">
-          <Image src="/mega-menu-construction.jpg" alt="India Run Sports" fill className="object-cover brightness-50" />
+          <Image src="/india-run-sports.jpg" alt="India Run Sports marathon" fill priority className="object-cover brightness-50" />
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">India Run Sports</h1>
@@ -45,6 +42,21 @@ export default function IndiaRunSportsPage() {
                 a healthier lifestyle in society.
               </p>
             </div>
+
+            <figure className="mb-16">
+              <div className="relative aspect-[16/9] rounded-xl overflow-hidden shadow-xl">
+                <Image
+                  src="/india-run-sports.jpg"
+                  alt="Runners crossing the India Run Sports start line along the Mumbai waterfront"
+                  fill
+                  sizes="(max-width: 896px) 100vw, 896px"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 text-sm text-muted-foreground text-center">
+                India Run Sports — celebrating fitness with runners of all ages
+              </figcaption>
+            </figure>
 
             <div className="mb-16">
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">

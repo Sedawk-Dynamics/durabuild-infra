@@ -27,7 +27,7 @@ export default function ServicesPage() {
 
   return (
     <PageWrapper>
-      <section className="relative h-[500px] flex items-center justify-center overflow-hidden mt-28">
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <video autoPlay loop muted playsInline className="w-full h-full object-cover brightness-[0.4]">
             <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/freepik__aerial-view-of-a-construction-site-with-cranes-and__87511-v6sgtKqiPO5dcQWgiKwUXwI5rZGzgv.mp4" type="video/mp4" />

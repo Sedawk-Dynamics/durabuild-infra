@@ -2,8 +2,6 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
-import { Navbar } from "@/components/navbar"
-import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 
 export const metadata: Metadata = {
@@ -34,7 +32,7 @@ const initiatives = [
   {
     title: "India Run Sports",
     description: "Encouraging sports participation, building sports infrastructure, and supporting athletes to promote fitness and national pride.",
-    image: "/mega-menu-construction.jpg",
+    image: "/india-run-sports.jpg",
     href: "/csr/india-run-sports",
   },
 ]
@@ -42,8 +40,6 @@ const initiatives = [
 export default function CsrPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Navbar />
-
       <main className="flex-1">
         {/* Hero */}
         <section className="bg-gradient-to-r from-[#0a3d3d] to-[#0d4d4d] text-white pt-40 pb-20">
@@ -94,7 +90,6 @@ export default function CsrPage() {
         </section>
       </main>
 
-      <Footer />
     </div>
   )
 }

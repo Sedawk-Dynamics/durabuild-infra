@@ -1,7 +1,5 @@
 "use client"
 
-import { SiteNavbar } from "@/components/site-navbar"
-import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Building2, Home, Factory, School, CheckCircle2, Phone, Mail } from "lucide-react"
@@ -11,8 +9,6 @@ import Image from "next/image"
 export default function ConstructionServicesPage() {
   return (
     <>
-      <SiteNavbar />
-
       {/* Hero Section */}
       <section className="relative h-[500px] flex items-center justify-center overflow-hidden mt-28">
         <div className="absolute inset-0 z-0">
@@ -336,7 +332,6 @@ export default function ConstructionServicesPage() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

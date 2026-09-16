@@ -3,13 +3,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle2 } from "lucide-react"
-import { Navbar } from "@/components/navbar"
 
 export default function WhyDurabuildPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-
       <div className="container mx-auto px-4 lg:px-8 py-24 pt-40">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-5xl font-bold text-[#0a3d3d] mb-4 text-balance">Why Choose Durabuild?</h1>

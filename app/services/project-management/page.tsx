@@ -5,13 +5,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Users, CheckCircle2, Mail, Phone } from "lucide-react"
-import { SiteNavbar } from "@/components/site-navbar"
 
 export default function ProjectManagementPage() {
   return (
     <div className="min-h-screen bg-background">
-      <SiteNavbar />
-
       {/* Hero Section with Video */}
       <section className="relative h-[500px] flex items-center justify-center overflow-hidden mt-28">
         <div className="absolute inset-0 z-0">
@@ -355,8 +352,8 @@ export default function ProjectManagementPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-2">Email Consultation</h3>
                   <p className="text-muted-foreground mb-4">Send your project details for assessment</p>
-                  <a href="mailto:info@gmail.com" className="text-lg font-semibold text-primary hover:underline">
-                    info@gmail.com
+                  <a href="mailto:info@durainfra.com" className="text-lg font-semibold text-primary hover:underline">
+                    info@durainfra.com
                   </a>
                 </CardContent>
               </Card>

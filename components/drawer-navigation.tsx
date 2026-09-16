@@ -6,6 +6,7 @@ import { X, Search, ChevronDown, ChevronUp, Phone, Mail, MapPin } from "lucide-r
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Image from "next/image"
+import { CONTACT } from "@/lib/navigation"
 
 interface DrawerNavigationProps {
   isOpen: boolean
@@ -114,8 +115,8 @@ export function DrawerNavigation({ isOpen, onClose }: DrawerNavigationProps) {
       />
       {/* Drawer */}
       <div
-        className={`fixed left-0 top-0 bottom-0 w-full max-w-md bg-white z-[60] transform transition-transform duration-300 ease-in-out overflow-y-auto shadow-2xl ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
+        className={`fixed left-0 top-0 bottom-0 w-full max-w-md bg-white z-[60] transform transition-transform duration-300 ease-in-out overflow-y-auto ${
+          isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
         }`}
       >
         <div className="p-6">
@@ -214,14 +215,18 @@ export function DrawerNavigation({ isOpen, onClose }: DrawerNavigationProps) {
               <div className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-[#c9ac6d] flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm font-medium text-gray-900">+91-7000329644</p>
+                  {CONTACT.phones.map((phone) => (
+                    <p key={phone} className="text-sm font-medium text-gray-900">
+                      {phone}
+                    </p>
+                  ))}
                   <p className="text-xs text-gray-500">Mon-Sat, 9 AM - 5 PM</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-[#c9ac6d] flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-sm font-medium text-gray-900">info@gmail.com</p>
+                  <p className="text-sm font-medium text-gray-900">{CONTACT.email}</p>
                   <p className="text-xs text-gray-500">24/7 support</p>
                 </div>
               </div>

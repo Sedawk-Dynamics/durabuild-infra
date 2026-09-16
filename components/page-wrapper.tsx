@@ -1,17 +1,10 @@
 import type { ReactNode } from "react"
-import { SiteNavbar } from "@/components/site-navbar"
-import { Footer } from "@/components/footer"
 
 interface PageWrapperProps {
   children: ReactNode
 }
 
+// The site header and footer are rendered by app/layout.tsx; this only offsets content below the fixed header.
 export function PageWrapper({ children }: PageWrapperProps) {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <SiteNavbar />
-      <main className="flex-1 pt-28">{children}</main>
-      <Footer />
-    </div>
-  )
+  return <main className="pt-28">{children}</main>
 }

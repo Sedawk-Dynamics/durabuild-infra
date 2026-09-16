@@ -69,38 +69,38 @@ export default function ContactPage() {
       title: "Dehradun (Head Office)",
       address: "Maruti Vihar, Raipur, Dehradun, Uttarakhand - 248008",
       phone: "+91-9855665557",
-      phone2: "6399015656",
-      email: "info@gmail.com",
+      phone2: "+91 70006 00316",
+      email: "info@durainfra.com",
     },
     {
       title: "Mumbai Office",
       address: "Coming Soon - Corporate Centre, Andheri East, Mumbai - 400069",
       phone: "+91-9855665557",
-      email: "mumbai@gmail.com",
+      email: "mumbai@durainfra.com",
     },
     {
       title: "Delhi Office",
       address: "Coming Soon - Connaught Place, New Delhi - 110001",
       phone: "+91-9855665557",
-      email: "delhi@gmail.com",
+      email: "delhi@durainfra.com",
     },
     {
       title: "Bangalore Office",
       address: "Coming Soon - Whitefield, Bangalore - 560066",
       phone: "+91-9855665557",
-      email: "bangalore@gmail.com",
+      email: "bangalore@durainfra.com",
     },
     {
       title: "Hyderabad Office",
       address: "Coming Soon - HITEC City, Hyderabad - 500081",
       phone: "+91-9855665557",
-      email: "hyderabad@gmail.com",
+      email: "hyderabad@durainfra.com",
     },
     {
       title: "Pune Office",
       address: "Coming Soon - Hinjewadi, Pune - 411057",
       phone: "+91-9855665557",
-      email: "pune@gmail.com",
+      email: "pune@durainfra.com",
     },
   ]
 
@@ -127,8 +127,8 @@ export default function ContactPage() {
                   <Mail className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-bold mb-2">General Enquiries</h3>
-                <a href="mailto:info@gmail.com" className="text-primary hover:underline">
-                  info@gmail.com
+                <a href="mailto:info@durainfra.com" className="text-primary hover:underline">
+                  info@durainfra.com
                 </a>
               </CardContent>
             </Card>
@@ -139,7 +139,7 @@ export default function ContactPage() {
                   <Phone className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-bold mb-2">Phone Support</h3>
-                <a href="tel:9855665557" className="text-primary hover:underline">
+                <a href="tel:9855665557" className="block text-primary hover:underline">
                   +91-9855665557
                 </a>
               </CardContent>
@@ -151,8 +151,8 @@ export default function ContactPage() {
                   <Mail className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-bold mb-2">Support Enquiries</h3>
-                <a href="mailto:support@gmail.com" className="text-primary hover:underline">
-                  support@gmail.com
+                <a href="mailto:support@durainfra.com" className="text-primary hover:underline">
+                  support@durainfra.com
                 </a>
               </CardContent>
             </Card>
@@ -163,8 +163,8 @@ export default function ContactPage() {
                   <Phone className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-bold mb-2">Office Phone</h3>
-                <a href="tel:6399015656" className="text-primary hover:underline">
-                  6399015656
+                <a href="tel:+917000600316" className="text-primary hover:underline">
+                  +91 70006 00316
                 </a>
               </CardContent>
             </Card>
@@ -427,8 +427,8 @@ export default function ContactPage() {
                         +91-9855665557
                       </a>
                       <br />
-                      <a href="tel:6399015656" className="hover:text-primary transition-colors">
-                        6399015656
+                      <a href="tel:+917000600316" className="hover:text-primary transition-colors">
+                        +91 70006 00316
                       </a>
                     </p>
                   </div>
