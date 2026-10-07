@@ -73,7 +73,7 @@ export default function LeadershipPage() {
                 <div className="w-32 h-32 rounded-full bg-[#c9a961]/10 mx-auto mb-4 flex items-center justify-center">
                   <span className="text-4xl font-bold text-[#c9a961]">SD</span>
                 </div>
-                <h3 className="text-xl font-bold text-[#0a3d3d] mb-2">Sandhay</h3>
+                <h3 className="text-xl font-bold text-[#0a3d3d] mb-2">Sundhya</h3>
                 <p className="text-sm text-[#c9a961] font-medium mb-3">Director</p>
                 <p className="text-sm text-muted-foreground">
                   Expert in construction management and operations, ensuring quality delivery and client satisfaction

@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { BackToTop } from "@/components/back-to-top"
+import { SiteAssistant } from "@/components/site-assistant"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -30,6 +31,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <BackToTop />
+        <SiteAssistant />
         <Analytics />
       </body>
     </html>

@@ -69,7 +69,7 @@ export default function ContactPage() {
       title: "Dehradun (Head Office)",
       address: "Maruti Vihar, Raipur, Dehradun, Uttarakhand - 248008",
       phone: "+91-9855665557",
-      phone2: "+91 70006 00316",
+      phone2: "+91 70003 29644",
       email: "info@durainfra.com",
     },
     {
@@ -163,8 +163,8 @@ export default function ContactPage() {
                   <Phone className="w-8 h-8 text-primary" />
                 </div>
                 <h3 className="font-bold mb-2">Office Phone</h3>
-                <a href="tel:+917000600316" className="text-primary hover:underline">
-                  +91 70006 00316
+                <a href="tel:+917000329644" className="text-primary hover:underline">
+                  +91 70003 29644
                 </a>
               </CardContent>
             </Card>
@@ -427,8 +427,8 @@ export default function ContactPage() {
                         +91-9855665557
                       </a>
                       <br />
-                      <a href="tel:+917000600316" className="hover:text-primary transition-colors">
-                        +91 70006 00316
+                      <a href="tel:+917000329644" className="hover:text-primary transition-colors">
+                        +91 70003 29644
                       </a>
                     </p>
                   </div>
@@ -500,7 +500,7 @@ export default function ContactPage() {
               </svg>
             </Link>
             <Link
-              href="https://wa.me/919855665557"
+              href="https://wa.me/917000329644"
               className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
               target="_blank"
               rel="noopener noreferrer"

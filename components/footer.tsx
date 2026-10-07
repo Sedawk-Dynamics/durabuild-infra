@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Facebook, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react"
+import { ArrowRight, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react"
+import { WhatsAppIcon } from "@/components/whatsapp-icon"
 import { CONTACT, NAV_SECTIONS } from "@/lib/navigation"
 
 const section = (id: string) => NAV_SECTIONS.find((s) => s.id === id)!
@@ -16,6 +17,8 @@ const linkColumns = [
 ]
 
 const socials = [
+  { label: "Instagram", href: "https://www.instagram.com/durainfra", icon: <Instagram className="w-4 h-4" /> },
+  { label: "WhatsApp", href: "https://wa.me/917000329644", icon: <WhatsAppIcon className="w-4 h-4" /> },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/durainfra", icon: <Linkedin className="w-4 h-4" /> },
   { label: "Facebook", href: "https://www.facebook.com/durainfra", icon: <Facebook className="w-4 h-4" /> },
   {
@@ -127,7 +130,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6 text-sm text-white/60">
-            <p>© 2026 Durabuild Corporation. All rights reserved.</p>
+            <p>© 2026 Durabuild Infra Build Pvt Corporation. All rights reserved.</p>
             <div className="flex gap-5">
               <Link href="/privacy-policy" className="hover:text-white transition-colors">
                 Privacy Policy
@@ -137,7 +140,7 @@ export function Footer() {
               </Link>
             </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3" aria-label="Social media">
             {socials.map((social) => (
               <a
                 key={social.label}
@@ -145,6 +148,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
+                title={social.label}
                 className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#c9a961] text-white flex items-center justify-center transition-colors"
               >
                 {social.icon}
